@@ -1,0 +1,481 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+<div class="flex min-h-full flex-col justify-center px-6 py-6 lg:px-8">
+	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+	  <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+	  <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+	</div>
+  
+	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+	  <form class="space-y-6" method="POST">
+		{% csrf_token %}
+		{% for message in messages %}
+		{% if message.tags == 'error' %}
+		<p class="my-3 rounded-md w-full py-3 text-center px-4 bg-red-50 text-red-600">{{message}}</p>
+		{% else %}
+		<p class="my-3 rounded-md w-full py-3 text-center px-4 bg-green-50 text-green-600">{{message}}</p>
+		{% endif %}
+		{% endfor %}
+		<div>
+		  <label for="email" class="block text-sm/6 font-medium text-gray-900">Username</label>
+		  <div class="mt-2">
+			<input id="username" name="username" type="username" autocomplete="username" required class="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+		  </div>
+		</div>
+  
+		<div>
+		  <div class="flex items-center justify-between">
+			<label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
+			<div class="text-sm">
+			</div>
+		  </div>
+		  <div class="mt-2">
+			<input id="password" name="password" type="password" autocomplete="current-password" required class="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+		  </div>
+		</div>
+  
+		<div>
+		  <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+		</div>
+	  </form>
+  
+	  <p class="mt-10 text-center text-sm/6 text-gray-500">
+		Not a member?
+		<a href="{% url 'register' %}" class="font-semibold text-indigo-600 hover:text-indigo-500">Register</a>
+	  </p>
+	</div>
+  </div>
+  
+{% endblock %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login | TF Temilorx Signature</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: sans-serif;
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+
+	.nav {
+		background-color: grey;
+		width: 100%;
+		align-items: center;
+		justify-content: space-around;
+		display: flex;
+		min-height: 10vh;
+	}
+
+	nav {
+		letter-spacing: 7px;
+		font-weight: bold;
+		color: white;
+		font-size: 25px;
+
+	}
+
+	nav a {
+		text-decoration: none;
+		color: wheat;
+		transition: .3s;
+	}
+
+	nav a:hover {
+		color: white;
+		transition: .3s;
+	}
+
+	.link2 {
+		display: none;
+		transition: .3s;
+	}
+
+	.links ul {
+		display: flex;
+		justify-content: space-around;
+		width: 480px;
+	}
+
+	.links li {
+		list-style: none;
+	}
+
+	.links li a {
+		color: wheat;
+		font-size: 13px;
+		letter-spacing: 2px;
+		text-decoration: none;
+		transition: .3s ease-in;
+	}
+
+	.links li a:hover,
+	.link2 li a:hover {
+		color: white;
+		transition: .3s ease-in;
+	}
+
+	.burger {
+		height: 17px;
+		cursor: pointer;
+		width: 25px;
+		display: none;
+	}
+
+	.burg1 {
+		background-color: wheat;
+		width: 24px;
+		height: 2px;
+		transition: .3s;
+	}
+
+	.burg2,
+	.burg3 {
+		background-color: wheat;
+		margin-top: 5px;
+		width: 24px;
+		height: 2px;
+		transition: .3s;
+	}
+
+	.burg2:hover,
+	.burg3:hover,
+	.burg1:hover {
+		background-color: white;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.text {
+			padding-top: 30px;
+		}
+
+		.links ul {
+			display: none;
+		}
+
+		.burger {
+			display: block;
+		}
+
+		.link2 {
+			background-color: grey;
+			width: 40%;
+			position: absolute;
+			top: 9%;
+			left: 62%;
+			float: right;
+			justify-content: flex-end;
+			text-align: center;
+		}
+
+		.link2.toggle {
+			display: block;
+			transition: .3s;
+		}
+
+		.link2 ul {
+			list-style: none;
+			padding-top: 44px;
+		}
+
+		.link2 li {
+			margin-bottom: 44px;
+		}
+
+		.link2 li a {
+			color: wheat;
+			font-size: 14px;
+			letter-spacing: 2px;
+			transition: .3s ease-in;
+			text-decoration: none;
+		}
+
+		.burg1.tog {
+			transform: rotate(-45deg) translate(-5px, 6px);
+			transition: .3s;
+		}
+
+		.burg2.tog {
+			opacity: 0;
+			transition: .3s;
+		}
+
+		.burg3.tog {
+			transition: .3s;
+			transform: rotate(45deg) translate(-5px, -6px);
+		}
+
+		.nav2 {
+			justify-content: flex-end;
+			width: 100%;
+		}
+	}
+
+	.login-box {
+		width: 380px;
+		border: 1px solid #ccc;
+		top: 45%;
+		left: 45%;
+		position: absolute;
+		z-index: -1;
+		transform: translate(-40%, -40%);
+
+	}
+
+	.headform {
+		background-color: grey;
+		color: wheat;
+		height: 50px;
+		text-align: center;
+	}
+
+	.headform p {
+		padding-top: 15px;
+		letter-spacing: 0.1rem;
+	}
+
+	.form {
+		width: 100%;
+		margin: 0px auto;
+		padding: 0px 30px;
+	}
+
+	.label {
+		margin: 12px 0px 12px 0px;
+	}
+
+	.input,
+	#id_username,
+	#id_password {
+		width: 300px;
+		height: 30px;
+		padding: 0px 8px;
+	}
+
+	#id_password {
+		margin-top: 10px;
+	}
+
+	#id_username {
+		margin-bottom: 20px;
+		margin-top: 10px;
+	}
+
+	button {
+		padding: 9px 20px;
+		margin-top: 12px;
+		margin-bottom: 12px;
+		color: wheat;
+		border: none;
+		background-color: grey;
+		transition: .4s;
+		border-radius: 3px;
+	}
+
+	button:hover {
+		background-color: #808076;
+		transition: .4s;
+	}
+
+	.form p {
+		border: 1px solid green;
+		padding: 4px 9px;
+		border-radius: 3px;
+		font-size: 18px;
+		color: green;
+		text-align: center;
+		margin-top: 12px;
+		margin-bottom: 8px;
+		;
+		width: 285px;
+	}
+
+	.form .register {
+		text-decoration: none;
+		margin-left: 12px;
+
+	}
+
+	.errorlist.nonfield {
+		padding: 0px;
+		width: 295px;
+		text-align: justify-all;
+		margin-bottom: 10px;
+	}
+
+	.errorlist.nonfield li {
+		list-style: none;
+		color: red;
+	}
+
+	.reset {
+		margin-left: 0px;
+		text-decoration: none;
+	}
+
+	.text {
+		margin-top: 20px;
+	}
+
+	.text .container {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.text h2 {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.text p {
+		margin-bottom: 15px;
+	}
+</style>
+
+<body>
+	<div class="opa">
+		<div class="nav">
+			<div class="logo">
+				<nav>
+					<a href="{% url 'store' %}">TF Temilorx Signature </a>
+				</nav>
+			</div>
+			<div class="links">
+				<ul>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'store' %}">Home</a></li>
+					<li><a href="{% url 'contact-us' %}">Contact us</a></li>
+					<li><a href="{% url 'user_delivery_status' %}">Orders</a></li>
+					<li><a href="{% url 'logout' %}">Log out</a></li>
+					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
+					{% else %}
+					<li><a href="{% url 'store' %}">Home</a></li>
+					<li><a href="{% url 'contact-us' %}">Contact us</a></li>
+					<li><a href="{% url 'user_delivery_status' %}">Orders</a></li>
+					<li><a href="{% url 'login' %}">Log in</a></li>
+					<li><a href="{% url 'register' %}">Register</a></li>
+					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
+					{% endif %}
+				</ul>
+
+
+
+			</div>
+			<div class="burger" onclick="tog()">
+				<div class="burg1"></div>
+				<div class="burg2"></div>
+				<div class="burg3"></div>
+			</div>
+		</div>
+		<div class="nav2">
+			<div class="link2">
+				<ul>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'store' %}">Home</a></li>
+					<li><a href="">Contact us</a></li>
+					<li><a href="{% url 'contact-us' %}">Services</a></li>
+					<li><a href="{% url 'logout' %}">Log out</a></li>
+					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
+					{% if user.is_staff %}
+					<li><a href="http://localhost:8000/admin">Admin</a></li>
+					{% else %}
+					{% endif %}
+					{% else %}
+					<li><a href="{% url 'store' %}">Home</a></li>
+					<li><a href="{% url 'contact-us' %}">Contact us</a></li>
+					<li><a href="{% url 'user_delivery_status' %}">Orders</a></li>
+					<li><a href="{% url 'login' %}">Log in</a></li>
+					<li><a href="{% url 'register' %}">Register</a></li>
+					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
+					{% endif %}
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	{% if user.is_authenticated %}
+	<div class="text">
+		<div class="container">
+			<a href="{% url 'store' %}">Go to Home</a>
+			<p>
+				<strong>
+					<h2>Logged In</h2>
+				</strong>
+			<p>You are currently logged in.</p>
+			<a href="{% url 'logout' %}">Log out</a>
+			</p>
+		</div>
+	</div>
+	{% else %}
+	<form method="POST">
+		<div class="login-box">
+			<div class="box">
+				{%csrf_token%}
+				<div class="headform">
+					<p>TF Temilorx Signature Login</p>
+				</div>
+				<div class="form">
+					<div class="label">
+						{% if messages %}
+						{% for message in messages %}
+						<p>{{message}}</p>
+						{% endfor %}
+						{% endif %}
+						{{form}}
+					<button type="submit" name="">Login</button>
+					<a href="{% url 'register' %}" class="register">Register</a><br>
+					<a href="{% url 'reset_password' %}" class="reset">Reset Password</a><br>
+					<a href="{% url 'driver_login' %}" class="reset">Driver Login</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endif %}
+
+	<script type="text/javascript">
+		function tog() {
+			let x = document.querySelector('.link2');
+			let y = document.querySelector('.burg1');
+			let b = document.querySelector('.burg2');
+			let a = document.querySelector('.burg3');
+			x.classList.toggle('toggle');
+			y.classList.toggle('tog');
+			a.classList.toggle('tog');
+			b.classList.toggle('tog');
+		}
+	</script>
+</body>
+
+</html>

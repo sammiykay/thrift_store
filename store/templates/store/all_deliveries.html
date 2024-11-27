@@ -1,0 +1,31 @@
+<!-- all_deliveries.html -->
+  <h2>All Deliveries</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Address</th>
+        <th>Delivery Status</th>
+        <th>Change Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for delivery, form in deliveries_with_forms %}
+        <tr>
+          <td>{{ delivery.order.id }}</td>
+          <td>{{ delivery.customer.name }}</td>
+          <td>{{ delivery.address }}</td>
+          <td>{{ delivery.get_status_display }}</td>
+          <td>
+            <form method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}  <!-- Render form for each delivery -->
+              <input type="hidden" name="delivery_id" value="{{ delivery.id }}">
+              <button type="submit" class="btn btn-primary">Update Status</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>

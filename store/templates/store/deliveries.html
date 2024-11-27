@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Deliveries | TF Temilorx Signature</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+</head>
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: sans-serif;
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+
+	.nav {
+		background-color: grey;
+		width: 100%;
+		align-items: center;
+		justify-content: space-around;
+		display: flex;
+		min-height: 10vh;
+	}
+
+	nav {
+		letter-spacing: 7px;
+		font-weight: bold;
+		color: white;
+		font-size: 25px;
+
+	}
+
+	nav a {
+		text-decoration: none;
+		color: wheat;
+		transition: .3s;
+	}
+
+	nav a:hover {
+		color: white;
+		transition: .3s;
+	}
+
+	.link2 {
+		display: none;
+		transition: .3s;
+	}
+
+	.links ul {
+		display: flex;
+		justify-content: space-around;
+		width: 480px;
+	}
+
+	.links li {
+		list-style: none;
+	}
+
+	.links li a {
+		color: wheat;
+		font-size: 13px;
+		letter-spacing: 2px;
+		text-decoration: none;
+		transition: .3s ease-in;
+	}
+
+	.links li a:hover,
+	.link2 li a:hover {
+		color: white;
+		transition: .3s ease-in;
+	}
+
+	.burger {
+		height: 17px;
+		cursor: pointer;
+		width: 25px;
+		display: none;
+	}
+
+	.burg1 {
+		background-color: wheat;
+		width: 24px;
+		height: 2px;
+		transition: .3s;
+	}
+
+	.burg2,
+	.burg3 {
+		background-color: wheat;
+		margin-top: 5px;
+		width: 24px;
+		height: 2px;
+		transition: .3s;
+	}
+
+	.burg2:hover,
+	.burg3:hover,
+	.burg1:hover {
+		background-color: white;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.text {
+			padding-top: 30px;
+		}
+
+		.links ul {
+			display: none;
+		}
+
+		.burger {
+			display: block;
+		}
+
+		.link2 {
+			background-color: grey;
+			width: 40%;
+			position: absolute;
+			top: 9%;
+			left: 62%;
+			float: right;
+			justify-content: flex-end;
+			text-align: center;
+		}
+
+		.link2.toggle {
+			display: block;
+			transition: .3s;
+		}
+
+		.link2 ul {
+			list-style: none;
+			padding-top: 44px;
+		}
+
+		.link2 li {
+			margin-bottom: 44px;
+		}
+
+		.link2 li a {
+			color: wheat;
+			font-size: 14px;
+			letter-spacing: 2px;
+			transition: .3s ease-in;
+			text-decoration: none;
+		}
+
+		.burg1.tog {
+			transform: rotate(-45deg) translate(-5px, 6px);
+			transition: .3s;
+		}
+
+		.burg2.tog {
+			opacity: 0;
+			transition: .3s;
+		}
+
+		.burg3.tog {
+			transition: .3s;
+			transform: rotate(45deg) translate(-5px, -6px);
+		}
+
+		.nav2 {
+			justify-content: flex-end;
+			width: 100%;
+		}
+	}
+
+	.login-box {
+		width: 380px;
+		border: 1px solid #ccc;
+		top: 45%;
+		left: 45%;
+		position: absolute;
+		z-index: -1;
+		transform: translate(-40%, -40%);
+
+	}
+
+	.headform {
+		background-color: grey;
+		color: wheat;
+		height: 50px;
+		text-align: center;
+	}
+
+	.headform p {
+		padding-top: 15px;
+		letter-spacing: 0.1rem;
+	}
+
+	.form {
+		width: 100%;
+		margin: 0px auto;
+		padding: 0px 30px;
+	}
+
+	.label {
+		margin: 12px 0px 12px 0px;
+	}
+
+	.input,
+	#id_username,
+	#id_password {
+		width: 300px;
+		height: 30px;
+		padding: 0px 8px;
+	}
+
+	#id_password {
+		margin-top: 10px;
+	}
+
+	#id_username {
+		margin-bottom: 20px;
+		margin-top: 10px;
+	}
+
+	button {
+		padding: 9px 20px;
+		margin-top: 12px;
+		margin-bottom: 12px;
+		color: wheat;
+		border: none;
+		background-color: grey;
+		transition: .4s;
+		border-radius: 3px;
+	}
+
+	button:hover {
+		background-color: #808076;
+		transition: .4s;
+	}
+
+	.form p {
+		border: 1px solid green;
+		padding: 4px 9px;
+		border-radius: 3px;
+		font-size: 18px;
+		color: green;
+		text-align: center;
+		margin-top: 12px;
+		margin-bottom: 8px;
+		;
+		width: 285px;
+	}
+
+	.form .register {
+		text-decoration: none;
+		margin-left: 12px;
+
+	}
+
+	.errorlist.nonfield {
+		padding: 0px;
+		width: 295px;
+		text-align: justify-all;
+		margin-bottom: 10px;
+	}
+
+	.errorlist.nonfield li {
+		list-style: none;
+		color: red;
+	}
+
+	.reset {
+		margin-left: 0px;
+		text-decoration: none;
+	}
+
+	.text {
+		margin-top: 20px;
+	}
+
+	.text .container {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.text h2 {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.text p {
+		margin-bottom: 15px;
+	}
+</style>
+
+<body>
+	<div class="opa">
+		<div class="nav">
+			<div class="logo">
+				<nav>
+					<a href="{% url 'store' %}">TF Temilorx Signature </a>
+				</nav>
+			</div>
+			<div class="links">
+				<ul>
+					<li><a href="{% url 'logout' %}">Log out</a></li>
+				</ul>
+
+
+
+			</div>
+			<div class="burger" onclick="tog()">
+				<div class="burg1"></div>
+				<div class="burg2"></div>
+				<div class="burg3"></div>
+			</div>
+		</div>
+		<div class="nav2">
+			<div class="link2">
+				<ul>
+					<li><a href="{% url 'logout' %}">Log out</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	<div class="mx-auto my-10" style="width: 80%;">
+		<div class="px-4 sm:px-6 lg:px-8">
+			<div class="sm:flex sm:items-center">
+				<div class="sm:flex-auto">
+					<h1 class="text-base font-semibold leading-6 text-gray-900">Deliveries</h1>
+					<p class="mt-2 text-sm text-gray-700">A list of all deliveries that is attached to you.</p>
+				</div>
+			</div>
+			{% if messages %}
+					{% for message in messages %}
+					<p class="my-3 rounded-md w-full py-3 px-4 bg-green-50 text-green-600">{{message}}</p>
+					{% endfor %}
+					{% endif %}
+			<div class="mt-8 flow-root">
+				<div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+					<div class="inline-block min-w-full py-2 align-middle">
+						<table class="min-w-full border-separate border-spacing-0">
+							<thead>
+								<tr>
+									<th scope="col"
+										class="sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+										Tracking Number</th>
+									<th scope="col"
+										class="sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+										Customer</th>
+									<th scope="col"
+										class="sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+										Address</th>
+									<th scope="col"
+										class="sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+										Delivery Status</th>
+									<th scope="col"
+										class="sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+										Products Purchased</th>
+									<th scope="col"
+										class="sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+										Change Status</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								{% for delivery, form in deliveries_with_forms %}
+								<tr>
+									<td
+										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										{{ delivery.tracking_number }}</td>
+									<td
+										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										{{ delivery.customer.name }}</td>
+									<td
+										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										{{ delivery.address }}</td>
+									<td
+										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm lg:table-cell">
+										
+										{% if delivery.get_status_display == 'Pending' %}
+										<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-inset ring-yellow-600/20 " >{{ delivery.get_status_display }}</span></td>
+										{% elif delivery.get_status_display == 'Shipped' %}
+										<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-inset ring-blue-600/20">{{ delivery.get_status_display }}</span></td>
+										{% elif delivery.get_status_display == 'Processing' %}
+										<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-400 ring-inset ring-yellow-600/20">{{ delivery.get_status_display }}</span></td>
+										{% elif delivery.get_status_display == 'Delivered' %}
+										<span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-inset ring-green-600/20">{{ delivery.get_status_display }}</span></td>
+										{% else %}
+										<span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-inset ring-red-600/20">{{ delivery.get_status_display }}</span></td>
+										{% endif %}
+
+									<td
+										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										<ul>
+											{% for item in delivery.order.orderitem_set.all %}
+												<li>{{ item.product.name }} (Quantity: {{ item.quantity }})</li>
+											{% endfor %}
+											</ul>
+										</td>
+									<td
+										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										<form method="POST">
+											{% csrf_token %}
+											{{ form.as_p }} <!-- Render form for each delivery -->
+											<input type="hidden" name="delivery_id" value="{{ delivery.id }}">
+											<button type="submit" class="btn btn-primary">Update Status</button>
+										</form>
+									</td>
+								</tr>
+								{% endfor %}
+								<!-- More people... -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
