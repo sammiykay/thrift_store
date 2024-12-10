@@ -1,14 +1,13 @@
 {% extends 'store/base.html' %}
+{% load static %}
 {% block content %}
 
 			<!-- Hero section -->
 			<div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
 				<div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
 					<div class="sm:max-w-lg">
-						<h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Summer styles are
-							finally here</h1>
-						<p class="mt-4 text-xl text-gray-500">This year, our new summer collection will shelter you from
-							the harsh elements of a world that doesn't care if you live or die.</p>
+						<h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Welcome to Our Thrift Store!</h1>
+						<p class="mt-4 text-xl text-gray-500">Discover unique, pre-loved treasures at unbeatable prices. From vintage classics to modern finds, there's something for everyone. Shop sustainably and find your next favorite piece today!</p>
 					</div>
 					<div>
 						<div class="mt-10">
@@ -21,35 +20,35 @@
 										<div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
 											<div
 												class="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-												<img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
+												<img src="{% static 'images/3.jpg' %}"
 													alt="" class="h-full w-full object-cover object-center">
 											</div>
 											<div class="h-64 w-44 overflow-hidden rounded-lg">
-												<img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-													alt="" class="h-full w-full object-cover object-center">
-											</div>
-										</div>
-										<div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-											<div class="h-64 w-44 overflow-hidden rounded-lg">
-												<img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-													alt="" class="h-full w-full object-cover object-center">
-											</div>
-											<div class="h-64 w-44 overflow-hidden rounded-lg">
-												<img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-													alt="" class="h-full w-full object-cover object-center">
-											</div>
-											<div class="h-64 w-44 overflow-hidden rounded-lg">
-												<img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
+												<img src="{% static 'images/4.jpg' %}"
 													alt="" class="h-full w-full object-cover object-center">
 											</div>
 										</div>
 										<div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
 											<div class="h-64 w-44 overflow-hidden rounded-lg">
-												<img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
+												<img src="{% static 'images/5.jpg' %}"
 													alt="" class="h-full w-full object-cover object-center">
 											</div>
 											<div class="h-64 w-44 overflow-hidden rounded-lg">
-												<img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
+												<img src="{% static 'images/6.jpg' %}"
+													alt="" class="h-full w-full object-cover object-center">
+											</div>
+											<div class="h-64 w-44 overflow-hidden rounded-lg">
+												<img src="{% static 'images/9.jpg' %}"
+													alt="" class="h-full w-full object-cover object-center">
+											</div>
+										</div>
+										<div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+											<div class="h-64 w-44 overflow-hidden rounded-lg">
+												<img src="{% static 'images/7.jpg' %}"
+													alt="" class="h-full w-full object-cover object-center">
+											</div>
+											<div class="h-64 w-44 overflow-hidden rounded-lg">
+												<img src="{% static 'images/8.jpg' %}"
 													alt="" class="h-full w-full object-cover object-center">
 											</div>
 										</div>
@@ -91,7 +90,7 @@
 			<section aria-labelledby="favorites-heading">
 				<div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
 					<div class="sm:flex sm:items-baseline sm:justify-between">
-						<h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-gray-900">Our Favorites
+						<h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-gray-900">All Product
 						</h2>
 						
 					</div>
@@ -116,41 +115,6 @@
 						  </div>
 						</div>
 						{% endfor %}
-						<div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-							  <img src="https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-							  <div>
-								<h3 class="text-sm text-gray-700">
-								  <a href="#">
-									<span aria-hidden="true" class="absolute inset-0"></span>
-									Basic Tee
-								  </a>
-								</h3>
-								<p class="mt-1 text-sm text-gray-500">Black</p>
-							  </div>
-							  <p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						  </div>
-						  <div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-							  <img src="https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-							  <div>
-								<h3 class="text-sm text-gray-700">
-								  <a href="#">
-									<span aria-hidden="true" class="absolute inset-0"></span>
-									Basic Tee
-								  </a>
-								</h3>
-								<p class="mt-1 text-sm text-gray-500">Black</p>
-							  </div>
-							  <p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						  </div>
-				  
 						<!-- More products... -->
 					  </div>
 

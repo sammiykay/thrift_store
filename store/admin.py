@@ -11,8 +11,8 @@ admin.site.register(ContactUs)
 admin.site.register(Shipping)
 admin.site.register(DeliveryDriver)
 
-# admin.site.site_header = "TF Temilorx Signature Admin"
-# admin.site.site_title = "TF Temilorx Signature Admin Portal"
+# admin.site.site_header = "Thrift Store Admin"
+# admin.site.site_title = "Thrift Store Admin Portal"
 # admin.site.index_title = "Welcome to Computerized campus shopping intranet admin"
 # Register your models here.
 

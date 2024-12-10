@@ -34,8 +34,9 @@
 
           
 
+			<p id="empty" class="text-red-500 text-sm none" style="display: none;">Please add items to your carts</p>
             <div class="mt-8 flex justify-end">
-                <button onclick="makePayment()" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-700 dark:bg-teal-600 dark:text-white dark:hover:bg-teal-900">Place Order</button>
+                <button onclick="makePayment()" id="payment_button" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Place Order</button>
             </div>
         </div>
     </div>
@@ -62,12 +63,14 @@
 	var csrftoken = getToken('csrftoken');
 	var shipping = '{{order.shipping}}'
 	var total = '{{order.get_cart_total}}'
-	if (shipping == 'False') {
-		document.getElementById('shipping-info').innerHTML = ''
+	console.log('total', total)
+	if (total === '0') {
+		document.getElementById('empty').style.display = 'block';
+		document.getElementById('payment_button').setAttribute('disabled', true);
+		document.getElementById('payment_button').classList.add('bg-gray-300');
+
 	}
-	if (user != 'Anonymoususer') {
-		document.getElementById('user-info').innerHTML = ''
-	}
+	
 
 	var form = document.getElementById('form')
 	form.addEventListener('submit', function (e) {

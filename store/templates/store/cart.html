@@ -44,8 +44,9 @@
 				  <input type="number" value="{{item.quantity}}" disabled class="w-full px-4 py-2 outline-none ring-inset ring-indigo-300 transition duration-100 focus:ring" />
   
 				</div>
-  
-				<button class="select-none text-sm font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">Delete</button>
+									<!-- <img data-product="{{item.product.id}}" data-action="remove" class="update-cart" src="{% static 'images/arrow-down.png' %}"> -->
+				
+				<button data-product="{{item.product.id}}" data-action="delete" class="update-cart select-none text-sm font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">Delete</button>
 			  </div>
   
 			  <div class="ml-4 pt-3 sm:pt-2 md:ml-8 lg:ml-16">

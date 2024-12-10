@@ -71,3 +71,9 @@ class DeliveryStatusUpdateForm(forms.ModelForm):
         fields = ['status']  # We are only updating the status field
 
     status = forms.ChoiceField(choices=Delivery.ORDER_STATUS_CHOICES, label="Delivery Status", widget=forms.Select())
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'

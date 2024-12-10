@@ -40,20 +40,20 @@
 
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="">
 								{% for delivery in deliveries %}
 								<tr>
 									<td
-										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										class=" whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
 										{{ delivery.tracking_number }}</td>
 									<td
-										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										class=" whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
 										{{ delivery.address }}</td>
 									<td
-										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										class=" whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
 										{{ delivery.get_delivery_method_display }}</td>
 									<td
-										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm lg:table-cell">
+										class=" whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm lg:table-cell">
 
 										{% if delivery.get_status_display == 'Pending' %}
 										<span
@@ -74,12 +74,12 @@
 									{% endif %}
 
 									<td
-										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										class=" whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
 										&#8358;{{delivery.delivery_fee}}
 										
 									</td>
 									<td
-										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										class=" whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
 										{% if delivery.estimated_delivery_date %}
 										{{ delivery.estimated_delivery_date }}
 										{% else %}
@@ -87,7 +87,7 @@
 										{% endif %}
 									</td>
 									<td
-										class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
+										class=" whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">
 										<ul>
 											{% for item in delivery.order.orderitem_set.all %}
 											  <li>{{ item.product.name }} (Quantity: {{ item.quantity }})</li>

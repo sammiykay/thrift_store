@@ -87,7 +87,7 @@
 
 					<div class="border-t border-gray-200 px-4 py-6">
 						<a href="#" class="-m-2 flex items-center p-2">
-							<img src="https://tailwindui.com/plus/img/flags/flag-canada.svg" alt=""
+							<img s src="{% static 'images/download.jpg' %}" alt=""
 								class="block h-auto w-5 shrink-0">
 							<span class="ml-3 block text-base font-medium text-gray-900">CAD</span>
 							<span class="sr-only">, change currency</span>
@@ -117,18 +117,20 @@
 						<div class="ml-4 flex lg:ml-0">
 							<a href="{% url 'store' %}">
 								<span class="sr-only">Your Company</span>
-								<img class="h-8 w-auto"
-									src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="">
+								<img class="h-4 w-auto"
+									src="{% static 'images/download.jpg' %}" alt="">
 							</a>
 						</div>
 
 						<!-- Flyout menus -->
 						<div class="hidden lg:ml-8 lg:block lg:self-stretch">
 							<div class="flex h-full space-x-8">
-
+								{% if not request.user.deliverydriver %}
 								<a href="{% url 'checkout' %}"
 									class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Checkout</a>
-
+									<a href="{% url 'user_delivery_status' %}"
+									class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Orders</a>
+								{% endif %}
 							</div>
 						</div>
 
@@ -151,6 +153,7 @@
 							</div>
 
 
+							{% if not request.user.deliverydriver %}
 
 							<!-- Cart -->
 							<div class="ml-4 flow-root lg:ml-6">
@@ -166,6 +169,7 @@
 									<span class="sr-only">items in cart, view bag</span>
 								</a>
 							</div>
+							{% endif %}
 						</div>
 					</div>
 				</div>

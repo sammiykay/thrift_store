@@ -167,20 +167,24 @@ def updateItem(request):
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
-
+    print(action)
+    print(order)
     if action == 'add':
         if product.quantity > 0:
             orderItem.quantity += 1
             product.quantity -= 1
             product.save()
+            orderItem.save()
         else:
             return JsonResponse('Out of stock', safe=False)
     elif action == 'remove':
         orderItem.quantity -= 1
         product.quantity += 1
         product.save()
-
-    orderItem.save()
+        orderItem.save()
+    elif action == 'delete':
+        order.delete()
+    
 
     if orderItem.quantity <= 0:
         orderItem.delete()
@@ -227,7 +231,7 @@ def register(request):
         password2 = request.POST.get('password2')
 
         if User.objects.filter(username=username).exists():
-            messages.error(request, "Username Exists.")
+            messages.error(request, "Username Already Exists.")
             return redirect('register')
 
         if not username or not password1 or not password2:
@@ -553,3 +557,21 @@ def user_login(request):
             messages.error(request, "Invalid username or password.")
     
     return render(request, 'store/login.html')
+
+
+
+
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Product added successfully!")
+            return redirect('add_product')
+    else:
+        form = ProductForm()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'store/add_product.html', context)

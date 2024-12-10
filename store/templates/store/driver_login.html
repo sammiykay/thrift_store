@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'store/base.html' %}
 
-<head>
-	<title>Login | TF Temilorx Signature</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+{% block content %}
 <style type="text/css">
 	* {
 		margin: 0;
@@ -36,7 +31,7 @@
 
 	nav a {
 		text-decoration: none;
-		color: wheat;
+		color: white;
 		transition: .3s;
 	}
 
@@ -61,7 +56,7 @@
 	}
 
 	.links li a {
-		color: wheat;
+		color: white;
 		font-size: 13px;
 		letter-spacing: 2px;
 		text-decoration: none;
@@ -82,7 +77,7 @@
 	}
 
 	.burg1 {
-		background-color: wheat;
+		background-color: white;
 		width: 24px;
 		height: 2px;
 		transition: .3s;
@@ -90,7 +85,7 @@
 
 	.burg2,
 	.burg3 {
-		background-color: wheat;
+		background-color: white;
 		margin-top: 5px;
 		width: 24px;
 		height: 2px;
@@ -142,7 +137,7 @@
 		}
 
 		.link2 li a {
-			color: wheat;
+			color: white;
 			font-size: 14px;
 			letter-spacing: 2px;
 			transition: .3s ease-in;
@@ -171,19 +166,19 @@
 	}
 
 	.login-box {
-		width: 380px;
+		width: 480px;
 		border: 1px solid #ccc;
 		top: 45%;
 		left: 45%;
 		position: absolute;
-		z-index: -1;
+		z-index: 1;
 		transform: translate(-40%, -40%);
 
 	}
 
 	.headform {
-		background-color: grey;
-		color: wheat;
+		background-color: rgb(64, 162, 214);
+		color: white;
 		height: 50px;
 		text-align: center;
 	}
@@ -206,9 +201,12 @@
 	.input,
 	#id_username,
 	#id_password {
-		width: 300px;
+		width: 400px;
 		height: 30px;
 		padding: 0px 8px;
+		border: 1px solid #8d8d8d;
+		outline: none;
+		border-radius: 3px;
 	}
 
 	#id_password {
@@ -224,9 +222,9 @@
 		padding: 9px 20px;
 		margin-top: 12px;
 		margin-bottom: 12px;
-		color: wheat;
+		color: white;
 		border: none;
-		background-color: grey;
+		background-color: rgb(64, 162, 214);
 		transition: .4s;
 		border-radius: 3px;
 	}
@@ -290,89 +288,16 @@
 		margin-bottom: 15px;
 	}
 </style>
-{% block content %}
 
 <body>
-	<div class="opa">
-		<div class="nav">
-			<div class="logo">
-				<nav>
-					<a href="{% url 'store' %}">TF Temilorx Signature </a>
-				</nav>
-			</div>
-			<div class="links">
-				<ul>
-					{% if user.is_authenticated %}
-					<li><a href="{% url 'store' %}">Home</a></li>
-					<li><a href="{% url 'contact-us' %}">Contact us</a></li>
-					<li><a href="{% url 'user_delivery_status' %}">Orders</a></li>
-					<li><a href="{% url 'logout' %}">Log out</a></li>
-					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
-					{% else %}
-					<li><a href="{% url 'store' %}">Home</a></li>
-					<li><a href="{% url 'contact-us' %}">Contact us</a></li>
-					<li><a href="{% url 'user_delivery_status' %}">Orders</a></li>
-					<li><a href="{% url 'login' %}">Log in</a></li>
-					<li><a href="{% url 'register' %}">Register</a></li>
-					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
-					{% endif %}
-				</ul>
-
-
-
-			</div>
-			<div class="burger" onclick="tog()">
-				<div class="burg1"></div>
-				<div class="burg2"></div>
-				<div class="burg3"></div>
-			</div>
-		</div>
-		<div class="nav2">
-			<div class="link2">
-				<ul>
-					{% if user.is_authenticated %}
-					<li><a href="{% url 'store' %}">Home</a></li>
-					<li><a href="">Contact us</a></li>
-					<li><a href="{% url 'contact-us' %}">Services</a></li>
-					<li><a href="{% url 'logout' %}">Log out</a></li>
-					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
-					{% if user.is_staff %}
-					<li><a href="http://localhost:8000/admin">Admin</a></li>
-					{% else %}
-					{% endif %}
-					{% else %}
-					<li><a href="{% url 'store' %}">Home</a></li>
-					<li><a href="{% url 'contact-us' %}">Contact us</a></li>
-					<li><a href="{% url 'user_delivery_status' %}">Orders</a></li>
-					<li><a href="{% url 'login' %}">Log in</a></li>
-					<li><a href="{% url 'register' %}">Register</a></li>
-					<li><a href="{% url 'cart' %}">[{{cartItems}}]Cart</a></li>
-					{% endif %}
-				</ul>
-
-			</div>
-		</div>
-	</div>
-	{% if user.is_authenticated %}
-	<div class="text">
-		<div class="container">
-			<a href="{% url 'store' %}">Go to Home</a>
-			<p>
-				<strong>
-					<h2>Logged In</h2>
-				</strong>
-			<p>You are currently logged in.</p>
-			<a href="{% url 'logout' %}">Log out</a>
-			</p>
-		</div>
-	</div>
-	{% else %}
+	
+	
 	<form method="POST">
 		<div class="login-box">
 			<div class="box">
 				{%csrf_token%}
 				<div class="headform">
-					<p>TF Temilorx Signature Login</p>
+					<p>Thrift Store Login</p>
 				</div>
 				<div class="form">
 					{% if messages %}
@@ -393,14 +318,12 @@
 						</div>
 						<button type="submit" name="">Login</button>
 						<a href="{% url 'driver_signup' %}" class="register">Register</a><br>
-						<a href="{% url 'reset_password' %}" class="reset">Reset Password</a>
+						<a href="{% url 'reset_password' %}" class="reset text-blue-500 hover:text-blue-600 hover:underline translate-x-0 ">Reset Password</a>
 					</div>
 				</div>
 			</div>
 	</form>
-	{% endif %}
 
-	{% endblock content %}
 	<script type="text/javascript">
 		function tog() {
 			let x = document.querySelector('.link2');
@@ -413,6 +336,4 @@
 			b.classList.toggle('tog');
 		}
 	</script>
-</body>
-
-</html>
+	{% endblock %}
