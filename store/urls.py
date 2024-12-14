@@ -28,7 +28,7 @@ urlpatterns = [
     path('reset_password_complete/',
     auth_views.PasswordResetCompleteView.as_view(template_name='store/reset_password_complete.html'),
     name ='password_reset_complete'),
-    path('login/', auth_views.LoginView.as_view(template_name='store/login.html', redirect_authenticated_user=True), name ='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='store/login.html'), name ='login' ),
     path('logout/', views.logout_view, name ='logout'),
 
     path('driver-signup/', views.driver_signup, name='driver_signup'),
